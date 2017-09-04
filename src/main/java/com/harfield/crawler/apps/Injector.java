@@ -1,7 +1,7 @@
 package com.harfield.crawler.apps;
 
-import com.harfield.crawler.common.Task;
-import com.harfield.crawler.common.CrawlJob;
+import com.harfield.crawler.domain.Task;
+import com.harfield.crawler.domain.CrawlJob;
 
 import com.harfield.crawler.service.DBService;
 import org.slf4j.Logger;

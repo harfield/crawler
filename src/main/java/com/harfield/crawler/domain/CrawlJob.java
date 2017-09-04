@@ -1,4 +1,4 @@
-package com.harfield.crawler.common;
+package com.harfield.crawler.domain;
 
 import java.util.Date;
 

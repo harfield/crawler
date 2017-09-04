@@ -1,4 +1,4 @@
-package com.harfield.crawler.common;
+package com.harfield.crawler.domain;
 
 /**
  * Created by Administrator on 2015/12/31.

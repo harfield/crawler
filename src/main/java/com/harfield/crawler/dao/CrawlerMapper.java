@@ -1,6 +1,6 @@
 package com.harfield.crawler.dao;
 
-import com.harfield.crawler.common.Task;
+import com.harfield.crawler.domain.Task;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;

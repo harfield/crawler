@@ -1,7 +1,7 @@
 package com.harfield.crawler.service;
 
 
-import com.harfield.crawler.common.Task;
+import com.harfield.crawler.domain.Task;
 import com.harfield.crawler.dao.CrawlerMapper;
 import org.mybatis.spring.annotation.MapperScan;
 

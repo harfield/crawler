@@ -1,7 +1,7 @@
 package com.harfield.crawler;
 
-import com.harfield.crawler.common.Task;
-import com.harfield.crawler.common.FieldExtractRule;
+import com.harfield.crawler.domain.Task;
+import com.harfield.crawler.domain.FieldExtractRule;
 
 import java.util.List;
 import java.util.Map;

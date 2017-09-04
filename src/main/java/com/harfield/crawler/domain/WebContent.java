@@ -1,4 +1,4 @@
-package com.harfield.crawler.common;
+package com.harfield.crawler.domain;
 
 import org.jsoup.helper.Validate;
 import org.slf4j.Logger;

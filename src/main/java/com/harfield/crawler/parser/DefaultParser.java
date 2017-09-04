@@ -2,8 +2,8 @@ package com.harfield.crawler.parser;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.harfield.crawler.common.Task;
-import com.harfield.crawler.common.FieldExtractRule;
+import com.harfield.crawler.domain.Task;
+import com.harfield.crawler.domain.FieldExtractRule;
 import com.harfield.crawler.Parser;
 import org.jsoup.Jsoup;
 import org.slf4j.Logger;

@@ -1,7 +1,7 @@
 package com.harfield.crawler;
 
-import com.harfield.crawler.common.Task;
-import com.harfield.crawler.common.WebContent;
+import com.harfield.crawler.domain.Task;
+import com.harfield.crawler.domain.WebContent;
 
 /**
  * Created by Administrator on 2015/12/31.
