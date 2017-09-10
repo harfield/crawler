@@ -14,7 +14,13 @@ java crawler (not finished)
 
 ## structure
 
-``` flow
- 
+
+```
+graph TD
+
+    A[a] --> B(b)
+    B --> C{x}
+    C -->|one| D[lap]
+    C -->|two| E[x]
 
 ```
