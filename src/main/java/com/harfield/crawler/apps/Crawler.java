@@ -1,17 +1,8 @@
-package com.fancydsp.data.easycrawler.apps;
+package com.harfield.crawler.apps;
 
 import com.alibaba.fastjson.JSON;
-import CrawlAttempt;
-import CrawlJob;
-import FieldExtractRule;
-import WebContent;
-import Fetcher;
-import DefaultFetcher;
-import CrawlOutputer;
-import Parser;
-import DefaultParser;
-import DBUtils;
-import OSUtils;
+
+import com.harfield.crawler.domain.Job;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
@@ -25,9 +16,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Administrator on 2015/12/31.
- */
 public class Crawler {
     private static final Logger LOG = LoggerFactory.getLogger(Crawler.class);
 
@@ -102,7 +90,7 @@ public class Crawler {
                 try {
                     // 获取CrawlJobs
                     LOG.info("Begin to fetch available crawl jobs ...");
-                    List<CrawlJob> crawlJobList = fetchCrawlJobs();
+                    List<Job> crawlJobList = fetchCrawlJobs();
                     LOG.info("Fetch {} crawl jobs.", crawlJobList.size());
                     synchronized (containerMap) {
                         if (null == crawlJobList || crawlJobList.size() == 0) {

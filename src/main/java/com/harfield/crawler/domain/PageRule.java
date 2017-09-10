@@ -1,12 +1,10 @@
 package com.harfield.crawler.domain;
 
-/**
- * Created by Administrator on 2015/12/31.
- */
-public class FieldExtractRule {
+
+public class PageRule {
     @Override
     public String toString() {
-        return "FieldExtractRule{" +
+        return "PageRule{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", extractType=" + extractType +

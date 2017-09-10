@@ -2,8 +2,8 @@ package com.harfield.crawler.parser;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.harfield.crawler.domain.PageRule;
 import com.harfield.crawler.domain.Task;
-import com.harfield.crawler.domain.FieldExtractRule;
 import com.harfield.crawler.Parser;
 import org.jsoup.Jsoup;
 import org.slf4j.Logger;
@@ -40,20 +40,20 @@ public class DefaultParser implements Parser {
     private static final Logger LOG = LoggerFactory.getLogger(DefaultParser.class);
 
     @Override
-    public Map<String, Object> parse(String src, List<FieldExtractRule> fieldExtractRules, Task task) {
+    public Map<String, Object> parse(String src, List<PageRule> pageRules, Task task) {
         Map<String, Object> resultMap = new HashMap<String, Object>();
-        if (null == src || null == fieldExtractRules || fieldExtractRules.size() == 0) {
+        if (null == src || null == pageRules || pageRules.size() == 0) {
             return resultMap;
         }
         org.w3c.dom.Document w3cDoc = null;
         XPath xpath = null;
         org.jsoup.nodes.Document jsoupDoc = null;
         StringBuilder sb = new StringBuilder();
-        for (FieldExtractRule fieldExtractRule : fieldExtractRules) {
+        for (PageRule pageRule : pageRules) {
             try {
-                String name = fieldExtractRule.getName();
-                String rule = fieldExtractRule.getRule();
-                switch (fieldExtractRule.getExtractType()) {
+                String name = pageRule.getName();
+                String rule = pageRule.getRule();
+                switch (pageRule.getExtractType()) {
                     case 0:
                         if (rule != null && task != null) {
                             JSONObject extraJsonData = task.getExtraJsonData();
@@ -135,17 +135,17 @@ public class DefaultParser implements Parser {
                         }
                         break;
                     default:
-                        LOG.warn("{} extractType is in valid", fieldExtractRule);
+                        LOG.warn("{} extractType is in valid", pageRule);
                         break;
                 }
                 Object v = resultMap.get(name);
                 if (v == null) {
-                    String defaultValue = fieldExtractRule.getDefaultValue();
+                    String defaultValue = pageRule.getDefaultValue();
                     if (defaultValue != null && !"".equals(defaultValue = defaultValue.trim())) {
                         resultMap.put(name, defaultValue);
                     }
                 } else {
-                    if (fieldExtractRule.getValueType() == 1) {
+                    if (pageRule.getValueType() == 1) {
                         URI uri = new URI((String) v);
                         if (!uri.isAbsolute()) {
                             String baseUrl = task.getUrl();
@@ -158,7 +158,7 @@ public class DefaultParser implements Parser {
                     }
                 }
             } catch (Exception e) {
-                LOG.error("Parse {} failed: {}", fieldExtractRule, e.getMessage());
+                LOG.error("Parse {} failed: {}", pageRule, e.getMessage());
             }
         }
         return resultMap;
@@ -179,115 +179,115 @@ public class DefaultParser implements Parser {
 //        String src = fetcher.fetch(task);
 //        System.out.println(src);
 
-        List<FieldExtractRule> fieldExtractRules = new ArrayList<FieldExtractRule>();
+        List<PageRule> pageRules = new ArrayList<PageRule>();
 
-        FieldExtractRule fieldExtractRule1 = new FieldExtractRule();
-        fieldExtractRule1.setName("meta_info.category");
-        fieldExtractRule1.setExtractType(2);
-        fieldExtractRule1.setRule("//*[@id=\"firstCate\"]|//*[@id=\"firstCate\"]/following-sibling::*");
-        fieldExtractRules.add(fieldExtractRule1);
+        PageRule pageRule1 = new PageRule();
+        pageRule1.setName("meta_info.category");
+        pageRule1.setExtractType(2);
+        pageRule1.setRule("//*[@id=\"firstCate\"]|//*[@id=\"firstCate\"]/following-sibling::*");
+        pageRules.add(pageRule1);
 
-        FieldExtractRule fieldExtractRule2 = new FieldExtractRule();
-        fieldExtractRule2.setName("name");
-        fieldExtractRule2.setExtractType(2);
-        fieldExtractRule2.setRule("//h2[@class=\"intro-title\"]/text()");
-        fieldExtractRules.add(fieldExtractRule2);
+        PageRule pageRule2 = new PageRule();
+        pageRule2.setName("name");
+        pageRule2.setExtractType(2);
+        pageRule2.setRule("//h2[@class=\"intro-title\"]/text()");
+        pageRules.add(pageRule2);
 
-        FieldExtractRule fieldExtractRule3 = new FieldExtractRule();
-        fieldExtractRule3.setName("meta_info.description");
-        fieldExtractRule3.setExtractType(2);
-        fieldExtractRule3.setRule("//p[@class=\"intro-desc\"]/text()");
-        fieldExtractRules.add(fieldExtractRule3);
+        PageRule pageRule3 = new PageRule();
+        pageRule3.setName("meta_info.description");
+        pageRule3.setExtractType(2);
+        pageRule3.setRule("//p[@class=\"intro-desc\"]/text()");
+        pageRules.add(pageRule3);
 
-        FieldExtractRule fieldExtractRule4 = new FieldExtractRule();
-        fieldExtractRule4.setName("meta_info.lesson");
-        fieldExtractRule4.setExtractType(3);
-        fieldExtractRule4.setRule(".timeline-total");
-        fieldExtractRules.add(fieldExtractRule4);
+        PageRule pageRule4 = new PageRule();
+        pageRule4.setName("meta_info.lesson");
+        pageRule4.setExtractType(3);
+        pageRule4.setRule(".timeline-total");
+        pageRules.add(pageRule4);
 
-        FieldExtractRule fieldExtractRule5 = new FieldExtractRule();
-        fieldExtractRule5.setName("meta_info.student_level");
-        fieldExtractRule5.setExtractType(2);
-        fieldExtractRule5.setRule("//dd[@id=\"dl_people_tag_container\"]//span[@class=\"people-item\"]");
-        fieldExtractRules.add(fieldExtractRule5);
+        PageRule pageRule5 = new PageRule();
+        pageRule5.setName("meta_info.student_level");
+        pageRule5.setExtractType(2);
+        pageRule5.setRule("//dd[@id=\"dl_people_tag_container\"]//span[@class=\"people-item\"]");
+        pageRules.add(pageRule5);
 
-        FieldExtractRule fieldExtractRule6 = new FieldExtractRule();
-        fieldExtractRule6.setName("meta_info.start_time");
-        fieldExtractRule6.setExtractType(3);
-        fieldExtractRule6.setRule(".timeline-start span");
-        fieldExtractRules.add(fieldExtractRule6);
+        PageRule pageRule6 = new PageRule();
+        pageRule6.setName("meta_info.start_time");
+        pageRule6.setExtractType(3);
+        pageRule6.setRule(".timeline-start span");
+        pageRules.add(pageRule6);
 
-        FieldExtractRule fieldExtractRule7 = new FieldExtractRule();
-        fieldExtractRule7.setName("meta_info.end_time");
-        fieldExtractRule7.setExtractType(3);
-        fieldExtractRule7.setRule(".timeline-end span");
-        fieldExtractRules.add(fieldExtractRule7);
+        PageRule pageRule7 = new PageRule();
+        pageRule7.setName("meta_info.end_time");
+        pageRule7.setExtractType(3);
+        pageRule7.setRule(".timeline-end span");
+        pageRules.add(pageRule7);
 
-        FieldExtractRule fieldExtractRule8 = new FieldExtractRule();
-        fieldExtractRule8.setName("meta_info.value");
-        fieldExtractRule8.setExtractType(1);
-//        fieldExtractRule8.setRule("(?<=价格：￥)[^<]+");
-        fieldExtractRule8.setRule("价格：￥(?<g>[^<]+)");
-        fieldExtractRules.add(fieldExtractRule8);
+        PageRule pageRule8 = new PageRule();
+        pageRule8.setName("meta_info.value");
+        pageRule8.setExtractType(1);
+//        pageRule8.setRule("(?<=价格：￥)[^<]+");
+        pageRule8.setRule("价格：￥(?<g>[^<]+)");
+        pageRules.add(pageRule8);
 
-        FieldExtractRule fieldExtractRule9 = new FieldExtractRule();
-        fieldExtractRule9.setName("price");
-        fieldExtractRule9.setExtractType(2);
-        fieldExtractRule9.setRule("//div[@class=\"intro-info-t\"]//span[@class=\"class-price\"]/text()");
-        fieldExtractRules.add(fieldExtractRule9);
+        PageRule pageRule9 = new PageRule();
+        pageRule9.setName("price");
+        pageRule9.setExtractType(2);
+        pageRule9.setRule("//div[@class=\"intro-info-t\"]//span[@class=\"class-price\"]/text()");
+        pageRules.add(pageRule9);
 
-        FieldExtractRule fieldExtractRule10 = new FieldExtractRule();
-        fieldExtractRule10.setName("meta_info.discount");
-        fieldExtractRule10.setExtractType(2);
-        fieldExtractRule10.setRule("//div[@class=\"intro-info-t\"]/p/text()");
-        fieldExtractRules.add(fieldExtractRule10);
+        PageRule pageRule10 = new PageRule();
+        pageRule10.setName("meta_info.discount");
+        pageRule10.setExtractType(2);
+        pageRule10.setRule("//div[@class=\"intro-info-t\"]/p/text()");
+        pageRules.add(pageRule10);
 
-        FieldExtractRule fieldExtractRule11 = new FieldExtractRule();
-        fieldExtractRule11.setName("meta_info.promotion");
-        fieldExtractRule11.setExtractType(2);
-        fieldExtractRule11.setRule("//ul[@class=\"coupon-list\"]/li");
-        fieldExtractRules.add(fieldExtractRule11);
+        PageRule pageRule11 = new PageRule();
+        pageRule11.setName("meta_info.promotion");
+        pageRule11.setExtractType(2);
+        pageRule11.setRule("//ul[@class=\"coupon-list\"]/li");
+        pageRules.add(pageRule11);
 
-        FieldExtractRule fieldExtractRule12 = new FieldExtractRule();
-        fieldExtractRule12.setName("target_url");
-        fieldExtractRule12.setExtractType(0);
-        fieldExtractRule12.setRule("url");
-        fieldExtractRules.add(fieldExtractRule12);
+        PageRule pageRule12 = new PageRule();
+        pageRule12.setName("target_url");
+        pageRule12.setExtractType(0);
+        pageRule12.setRule("url");
+        pageRules.add(pageRule12);
 
-        FieldExtractRule fieldExtractRule13 = new FieldExtractRule();
-        fieldExtractRule13.setName("original_url");
-        fieldExtractRule13.setExtractType(2);
-        fieldExtractRule13.setValueType(1);
-        fieldExtractRule13.setRule("//div[@class=\"intro-info-l\"]//img/@src");
-        fieldExtractRules.add(fieldExtractRule13);
+        PageRule pageRule13 = new PageRule();
+        pageRule13.setName("original_url");
+        pageRule13.setExtractType(2);
+        pageRule13.setValueType(1);
+        pageRule13.setRule("//div[@class=\"intro-info-l\"]//img/@src");
+        pageRules.add(pageRule13);
 
-        FieldExtractRule fieldExtractRule14 = new FieldExtractRule();
-        fieldExtractRule14.setName("tag");
-        fieldExtractRule14.setExtractType(0);
-        fieldExtractRule14.setDefaultValue("1617");
-        fieldExtractRules.add(fieldExtractRule14);
+        PageRule pageRule14 = new PageRule();
+        pageRule14.setName("tag");
+        pageRule14.setExtractType(0);
+        pageRule14.setDefaultValue("1617");
+        pageRules.add(pageRule14);
 
-        FieldExtractRule fieldExtractRule15 = new FieldExtractRule();
-        fieldExtractRule15.setName("advertiser_id");
-        fieldExtractRule15.setExtractType(0);
-        fieldExtractRule15.setRule("advertiser_id");
-        fieldExtractRules.add(fieldExtractRule15);
+        PageRule pageRule15 = new PageRule();
+        pageRule15.setName("advertiser_id");
+        pageRule15.setExtractType(0);
+        pageRule15.setRule("advertiser_id");
+        pageRules.add(pageRule15);
 
-        FieldExtractRule fieldExtractRule16 = new FieldExtractRule();
-        fieldExtractRule16.setName("material_id");
-        fieldExtractRule16.setExtractType(0);
-        fieldExtractRule16.setRule("product_id");
-        fieldExtractRules.add(fieldExtractRule16);
+        PageRule pageRule16 = new PageRule();
+        pageRule16.setName("material_id");
+        pageRule16.setExtractType(0);
+        pageRule16.setRule("product_id");
+        pageRules.add(pageRule16);
 
-        FieldExtractRule fieldExtractRule17 = new FieldExtractRule();
-        fieldExtractRule17.setName("material_id");
-        fieldExtractRule17.setExtractType(1);
-        fieldExtractRule17.setRule("data-cid=\"(?<g>[^\"]+)");
-        fieldExtractRule17.setOrd(1);
-        fieldExtractRules.add(fieldExtractRule17);
+        PageRule pageRule17 = new PageRule();
+        pageRule17.setName("material_id");
+        pageRule17.setExtractType(1);
+        pageRule17.setRule("data-cid=\"(?<g>[^\"]+)");
+        pageRule17.setOrd(1);
+        pageRules.add(pageRule17);
 
         /*Parser parser = new DefaultParser();
-        Map<String, Object> map = parser.parse(src.replaceAll("http://i1\\.c\\.hjfile\\.cn/lesson/intro/201411/", ""), fieldExtractRules, task);
+        Map<String, Object> map = parser.parse(src.replaceAll("http://i1\\.c\\.hjfile\\.cn/lesson/intro/201411/", ""), pageRules, task);
         if (map != null) {
             for (String key : map.keySet()) {
                 System.out.println(key + ": " + map.get(key));
@@ -304,24 +304,24 @@ public class DefaultParser implements Parser {
             conn.setAutoCommit(false);
             String updateCrawlJobStatusSql = "INSERT INTO field_extract_rule(fieldExtractRuleName,fieldExtractRuleType,fieldExtractRule,fieldExtractRuleValueType,fieldExtractRuleDefaultValue,fieldExtractRuleCrawlJobId,fieldExtractRuleOrder) VALUES (?,?,?,?,?,?,?)";
             preparedStatement = conn.prepareStatement(updateCrawlJobStatusSql);
-            for (FieldExtractRule fieldExtractRule : fieldExtractRules) {
-                preparedStatement.setString(1, fieldExtractRule.getName());
-                preparedStatement.setInt(2, fieldExtractRule.getExtractType());
-                String rule = fieldExtractRule.getRule();
+            for (PageRule pageRule : pageRules) {
+                preparedStatement.setString(1, pageRule.getName());
+                preparedStatement.setInt(2, pageRule.getExtractType());
+                String rule = pageRule.getRule();
                 if (null == rule) {
                     preparedStatement.setNull(3, Types.VARCHAR);
                 } else {
                     preparedStatement.setString(3, rule);
                 }
-                preparedStatement.setInt(4, fieldExtractRule.getValueType());
-                String defaultValue = fieldExtractRule.getDefaultValue();
+                preparedStatement.setInt(4, pageRule.getValueType());
+                String defaultValue = pageRule.getDefaultValue();
                 if (null == defaultValue) {
                     preparedStatement.setNull(5, Types.VARCHAR);
                 } else {
                     preparedStatement.setString(5, defaultValue);
                 }
                 preparedStatement.setLong(6, 1);
-                preparedStatement.setInt(7, fieldExtractRule.getOrd());
+                preparedStatement.setInt(7, pageRule.getOrd());
                 preparedStatement.addBatch();
             }
             preparedStatement.executeBatch();

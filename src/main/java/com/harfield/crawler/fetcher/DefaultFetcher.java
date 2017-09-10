@@ -180,12 +180,12 @@ public class DefaultFetcher implements Fetcher {
     }
 
     public static void main(String[] args) throws Exception {
-        /*CrawlJob crawlJob = new CrawlJob();
+        /*Job crawlJob = new Job();
         crawlJob.setRequestMethod(1);
         crawlJob.setRequestType(1);
 //        crawlJob.setUserAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36");
         Task crawlAttempt = new Task();
-        crawlAttempt.setCrawlJob(crawlJob);
+        crawlAttempt.setJob(crawlJob);
         crawlAttempt.setUrl("http://blog.csdn.net/redhat456/article/details/6149774");
 
         Fetcher fetcher = new DefaultFetcher();

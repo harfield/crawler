@@ -57,8 +57,8 @@ public class Task {
         if (requestMethod != null) {
             return requestMethod;
         }
-        if (crawlJob != null) {
-            return crawlJob.getRequestMethod();
+        if (job != null) {
+            return job.getRequestMethod();
         }
         throw new RuntimeException("requestMethod is not set");
     }
@@ -71,8 +71,8 @@ public class Task {
         if (requestType != null) {
             return requestType;
         }
-        if (crawlJob != null) {
-            return crawlJob.getRequestType();
+        if (job != null) {
+            return job.getRequestType();
         }
         throw new RuntimeException("requestType is not set");
     }
@@ -93,8 +93,8 @@ public class Task {
         if (maxTryRequest != null) {
             return maxTryRequest;
         }
-        if (crawlJob != null) {
-            return crawlJob.getMaxTryRequest();
+        if (job != null) {
+            return job.getMaxTryRequest();
         }
         throw new RuntimeException("maxTryRequest is not set");
     }
@@ -107,8 +107,8 @@ public class Task {
         if (followRedirects != null) {
             return followRedirects;
         }
-        if (crawlJob != null) {
-            return crawlJob.getFollowRedirects();
+        if (job != null) {
+            return job.getFollowRedirects();
         }
         throw new RuntimeException("followRedirects is not set");
     }
@@ -121,8 +121,8 @@ public class Task {
         if (userAgent != null) {
             return userAgent;
         }
-        if (crawlJob != null) {
-            return crawlJob.getUserAgent();
+        if (job != null) {
+            return job.getUserAgent();
         }
         return null;
     }
@@ -135,8 +135,8 @@ public class Task {
         if (timeout != null) {
             return timeout;
         }
-        if (crawlJob != null) {
-            return crawlJob.getTimeout();
+        if (job != null) {
+            return job.getTimeout();
         }
         return null;
     }
@@ -149,8 +149,8 @@ public class Task {
         if (useProxy != null) {
             return useProxy;
         }
-        if (crawlJob != null) {
-            return crawlJob.getUseProxy();
+        if (job != null) {
+            return job.getUseProxy();
         }
         throw new RuntimeException("useProxy is not set");
     }
@@ -247,12 +247,12 @@ public class Task {
         this.remark = remark;
     }
 
-    public CrawlJob getCrawlJob() {
-        return crawlJob;
+    public Job getJob() {
+        return job;
     }
 
-    public void setCrawlJob(CrawlJob crawlJob) {
-        this.crawlJob = crawlJob;
+    public void setJob(Job job) {
+        this.job = job;
     }
 
     public JSONObject getExtraJsonData() {
@@ -294,7 +294,7 @@ public class Task {
     private String remark;
     private JSONObject extraJsonData;
     private long version;
-    private CrawlJob crawlJob;
+    private Job job;
 
     public static void main(String[] args) throws Exception {
         /*Task crawlAttempt = new Task();

@@ -4,9 +4,6 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
-/**
- * Created by Administrator on 2015/7/1.
- */
 public final class OSUtils {
     /**
      * 判断当前操作系统是否Windows.
@@ -61,10 +58,5 @@ public final class OSUtils {
             sIP = ip.getHostAddress();
         }
         return sIP;
-    }
-
-    public static void main(String[] args) {
-        String ip = OSUtils.getLocalIP();
-        System.out.println("Local IP:\t" + ip);
     }
 }

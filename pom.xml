@@ -71,6 +71,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.26</version>
+
         </dependency>
 
         <dependency>
@@ -83,9 +84,9 @@
             <version>4.2.2.RELEASE</version>
         </dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-context-support</artifactId>-->
-            <!--<version>4.2.2.RELEASE</version>-->
+        <!--<groupId>org.springframework</groupId>-->
+        <!--<artifactId>spring-context-support</artifactId>-->
+        <!--<version>4.2.2.RELEASE</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>org.jsoup</groupId>
@@ -104,7 +105,8 @@
         </dependency>-->
         <dependency>
             <groupId>org.springframework.amqp</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>1.7.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
