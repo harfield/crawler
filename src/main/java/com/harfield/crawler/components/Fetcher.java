@@ -1,11 +1,13 @@
-package com.harfield.crawler;
+package com.harfield.crawler.components;
 
 import com.harfield.crawler.domain.Task;
 import com.harfield.crawler.domain.WebContent;
 
+
 /**
- * Created by Administrator on 2015/12/31.
  */
 public interface Fetcher {
-    WebContent fetch(Task task) throws Exception;
+
+     WebContent fetch(Task task) throws Exception;
+
 }

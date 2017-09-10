@@ -1,4 +1,4 @@
-package com.harfield.crawler.output;
+package com.harfield.crawler.components.output;
 
 import java.util.Map;
 

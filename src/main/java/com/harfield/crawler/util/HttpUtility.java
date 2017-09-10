@@ -1,6 +1,7 @@
-package com.harfield.crawler.output.httpoutput;
+package com.harfield.crawler.util;
 
-import com.harfield.crawler.output.httpoutput.impl.HujiangHttpOutputer;
+import com.harfield.crawler.components.output.httpoutput.HttpRuntimeException;
+import com.harfield.crawler.components.output.httpoutput.impl.HujiangHttpOutputer;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;

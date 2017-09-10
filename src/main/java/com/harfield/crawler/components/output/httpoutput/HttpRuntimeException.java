@@ -1,4 +1,4 @@
-package com.harfield.crawler.output.httpoutput;
+package com.harfield.crawler.components.output.httpoutput;
 
 /**
  * Created by Administrator on 2016/1/13.

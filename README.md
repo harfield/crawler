@@ -1,13 +1,18 @@
-# dependencies
+# crawler
+## description
+
+java crawler (not finished)
+
+## dependences
 
 + mysql
 + rabbitmq
-+ spring boot
 
-# runtime
-jdk 1.8+
+## runtime
 
-# structure
++ jdk1.8
+
+## structure
 
 
 ```

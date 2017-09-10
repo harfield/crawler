@@ -1,9 +1,9 @@
-package com.harfield.crawler.output.httpoutput.impl;
+package com.harfield.crawler.components.output.httpoutput.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.harfield.crawler.output.httpoutput.HttpOutputer;
-import com.harfield.crawler.output.httpoutput.HttpUtility;
+import com.harfield.crawler.components.output.httpoutput.HttpOutputer;
+import com.harfield.crawler.components.output.httpoutput.HttpUtility;
 
 import java.util.HashMap;
 import java.util.Map;

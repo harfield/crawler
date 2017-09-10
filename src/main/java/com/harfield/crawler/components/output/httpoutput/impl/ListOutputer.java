@@ -1,13 +1,12 @@
-package com.harfield.crawler.output.httpoutput.impl;
+package com.harfield.crawler.components.output.httpoutput.impl;
 
 
-import com.harfield.crawler.output.CrawlOutputer;
+import com.harfield.crawler.components.output.CrawlOutputer;
 import com.harfield.crawler.util.DBUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.Map;
 
 public final class ListOutputer implements CrawlOutputer {
