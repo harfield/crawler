@@ -8,9 +8,6 @@ import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
-/**
- * Created by harfield on 2017/8/29.
- */
 
 public interface CrawlerMapper {
 

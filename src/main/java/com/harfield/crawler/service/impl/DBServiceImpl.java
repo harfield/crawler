@@ -20,7 +20,7 @@ public class DBServiceImpl implements DBService {
     }
 
     @Override
-    public void queueTask(Task task) {
+    public void markTaskQueuing(Task task) {
 
     }
 }

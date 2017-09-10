@@ -3,6 +3,8 @@ package com.harfield.crawler.components.output.httpoutput;
 import com.alibaba.fastjson.JSONObject;
 import com.harfield.crawler.components.output.CrawlOutputer;
 import com.harfield.crawler.util.DBUtils;
+import com.harfield.crawler.util.HttpUtility;
+import com.harfield.crawler.util.Material;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
