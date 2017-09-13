@@ -23,4 +23,19 @@ public class DBServiceImpl implements DBService {
     public void markTaskQueuing(Task task) {
 
     }
+
+    @Override
+    public void markTaskRunning(Task task) {
+
+    }
+
+    @Override
+    public void markTaskFailed(Task task) {
+
+    }
+
+    @Override
+    public void markTaskFinished(Task task) {
+
+    }
 }

@@ -3,14 +3,14 @@ CREATE DATABASE crawler ;
 
 # create user 'crawler'@'%' IDentified by '123456';
 # grant all  privileges on crawler.* to 'crawler'@'%';
-
+USE crawler;
 CREATE TABLE `TASK` (
   `ID` bigint(20) NOT NULL AUTO_INCREMENT,
   `URL` text NOT NULL,
   `REFERRER` text,
   `SEND_TO_MQ_TIME` datetime DEFAULT NULL,
   `NEXT_CRAWL_TIME` datetime DEFAULT NULL,
-  `CRAWL_FINISHED_TIME` datetime DEFAULT NULL,
+  `FINISHED_TIME` datetime DEFAULT NULL,
   `FINISH_STATUS` int(11) DEFAULT NULL,
   `REMAINING_RETRY` int(11)  DEFAULT 0,
   `MSG` text,
@@ -18,7 +18,7 @@ CREATE TABLE `TASK` (
   `CREATE_TIME` datetime DEFAULT NULL,
   `UPDATE_TIME` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `URL` (`URL`)
+  UNIQUE KEY `URL` (`URL`(128))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 

@@ -1,7 +1,6 @@
 package com.harfield.crawler.util;
 
 import com.harfield.crawler.components.output.httpoutput.HttpRuntimeException;
-import com.harfield.crawler.components.output.httpoutput.impl.HujiangHttpOutputer;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
@@ -187,39 +186,7 @@ public class HttpUtility {
 
     }
 
-    public static void main(String[] args) throws IOException {
 
-        String test = "meta_info.lesson: 总计 403 课时\n" +
-                "content: 【新年星课】经典实用教材，中外名师主讲，流利口语、高级证书双丰收！\n" +
-                "original_url: http://i1.c.hjfile.cn/lesson/intro/201411/e9e6b654-8f82-437f-9b31-f0b673e64a35.png\n" +
-                "price: 3353.1\n" +
-                "material_id:15209274\n" +
-                "meta_info.start_time: 报班即学\n" +
-                "tag: 1617\n" +
-                "name: 日语零基础直达高级【0-N1全能会话1月班】\n" +
-                "meta_info.value: 3899\n" +
-                "meta_info.discount: 8.6折\n" +
-                "meta_info.end_time: 2017.12.15\n" +
-                "meta_info.category: 选课中心   >   日语   >   日语入门\n" +
-                "advertiser_id:20041\n" +
-                "target_url: http://class.hujiang.com/15209274/intro\n" +
-                "meta_info.promotion: [\"折 领券再减150元>> / 剩11小时21分37.9秒\",\"赠 全套教材7本+N1沪江内部讲义3本\"]\n";
-        Map<String, Object> params = new HashMap<>();
-        for (String s : test.split("\n")) {
-            String[] split = s.split(":", 2);
-            params.put(split[0], split[1].trim());
-        }
-//        Material material = getMaterial("http://i1.c.hjfile.cn/lesson/intro/201411/e9e6b654-8f82-437f-9b31-f0b673e64a35.png");
-//        System.out.println(material.fileBody.length);
-//        FileOutputStream fileOutputStream = new FileOutputStream(new File("D:/xx1.png"));
-//        OutputStream outputStream = fileOutputStream;
-//        outputStream.write(material.fileBody);
-//        outputStream.close();
-//        postMutiPart("http://127.0.0.1:8080/web", params, material, "image");
-        HujiangHttpOutputer hujiangHttpOutputer = new HujiangHttpOutputer();
-        hujiangHttpOutputer.output(params);
-
-    }
 
 
 }
