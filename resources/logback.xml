@@ -7,13 +7,13 @@
     <property name="info" value="info"/>
     <property name="warn" value="warn"/>
     <property name="error" value="error"/>
-    <property name="pname" value="easycrawler"/>
+    <property name="pname" value="crawler"/>
 
-    <!--<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%date [%thread] [%level] %logger Line:%L - %msg %n</pattern>
         </encoder>
-    </appender>-->
+    </appender>
     <appender name="TRACE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${log.base}/${pname}/${trace}/trace.%d{yyyy-MM-dd}.log</fileNamePattern>

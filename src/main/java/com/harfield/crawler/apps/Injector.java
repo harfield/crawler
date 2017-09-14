@@ -5,17 +5,20 @@ import com.harfield.crawler.domain.Task;
 
 import com.harfield.crawler.service.DBService;
 import com.harfield.crawler.service.MQService;
+import com.harfield.crawler.service.impl.DBServiceImpl;
 import com.harfield.crawler.util.MQUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.amqp.core.MessageDeliveryMode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -24,7 +27,7 @@ import java.util.List;
  *
  */
 @SpringBootApplication
-
+@ComponentScan(basePackages = "com.harfield.crawler.service")
 public class Injector {
 
     public static void main(String[] args) {
