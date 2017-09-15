@@ -8,21 +8,22 @@ import java.util.List;
 
 public interface CrawlerMapper {
 
-    @Select("select task.*,job.* from task  join job job on job_id=task.id where job.status in (1,2) ")
+    @Select("select task.*,job.*  from task  join job job on job_id=task.id where job.status in (1,2) ")
     @Results({
-//            @Result(property = "task.id",  column = "id" /*,javaType = UserSexEnum.class*/),
-//            @Result(property = "task.url", column = "url"),
-//            @Result(property = "task.referrer", column = "referrer"),
-//            @Result(property = "task.send_to_mq_time", column = "sendToMqTime"),
-//            @Result(property = "task.next_crawl_time", column = "nextCrawlTime"),
-//            @Result(property = "task.finished_time", column = "finishTime"),
-//            @Result(property = "task.finish_status", column = "finishStatus"),
-//            @Result(property = "task.remaining_retry", column = "remainingRetry"),
-//            @Result(property = "task.msg", column = "msg"),
-              @Result(property = "job.id", column = "job.id" ),
-//            @Result(property = "task.create_time", column = "createTime"),
-//            @Result(property = "task.update_time", column = "updateTime"),
+            @Result(column = "id",  property = "id" ),
+//            @Result(column = "task.url", property = "url"),
+//            @Result(column = "task.referrer", property = "referrer"),
+//            @Result(column = "task.send_to_mq_time", property = "sendToMqTime"),
+//            @Result(column = "task.next_crawl_time", property = "nextCrawlTime"),
+//            @Result(column = "task.finished_time", property = "finishTime"),
+//            @Result(column = "task.finish_status", property = "finishStatus"),
+//            @Result(column = "task.remaining_retry", property = "remainingRetry"),
+//            @Result(column = "task.msg", property = "msg"),
+            @Result(column = "update_time", property = "updateTime"),
+            @Result(column = "id", property = "job.id"),
+            @Result(column = "update_time", property = "job.updateTime"),
+            @Result(column = "insert_time", property = "job.insertTime"),
     })
     List<Task> getPendingTasks();
-    
+
 }

@@ -4,8 +4,10 @@ import com.harfield.crawler.apps.CrawlerStarter;
 import com.harfield.crawler.apps.Injector;
 import com.harfield.crawler.domain.Task;
 import com.harfield.crawler.service.DBService;
+import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.ApplicationContext;
@@ -22,6 +24,9 @@ public class DBServiceImplTest {
 
     @Resource
     DBService dbService;
+
+    @Resource
+    SqlSessionTemplate sqlSessionTemplate;
 
     @Test
     public void getPendingTasks() throws Exception {
