@@ -26,8 +26,7 @@ public class DBServiceImplTest {
     @Test
     public void getPendingTasks() throws Exception {
         List<Task> pendingTasks = dbService.getPendingTasks();
-
-
+        System.out.println(pendingTasks.toString());
     }
 
     @Test
