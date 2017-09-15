@@ -1,6 +1,5 @@
 package com.harfield.crawler.dao;
 
-import com.harfield.crawler.domain.Job;
 import com.harfield.crawler.domain.Task;
 import org.apache.ibatis.annotations.*;
 
@@ -25,7 +24,5 @@ public interface CrawlerMapper {
 //            @Result(property = "task.update_time", column = "updateTime"),
     })
     List<Task> getPendingTasks();
-
-    @Update("update crawl_attempt set crawlAttemptVersion=crawlAttemptVersion+1,crawlAttemptCrawlUpdateTime=now(),crawlAttemptSendMqTime=#{sendTime},crawlAttemptLastCrawlTime=#{lastCrawTime},crawlAttemptNextCrawlTime=#{nextCrawTime},crawlAttemptCrawlTimes=#{attemptTimes},crawlAttemptStat=#{attemptStatus},crawlAttemptRemark=#{remark} where crawlAttemptId=#{attemptId} and crawlAttemptVersion=#{attemptVersion}")
-    int updateCrawlAttemptByIdAndVersion();
+    
 }
