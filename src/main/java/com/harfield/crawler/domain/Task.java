@@ -115,4 +115,22 @@ public class Task {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", url='" + url + '\'' +
+                ", referrer='" + referrer + '\'' +
+                ", sendToMqTime=" + sendToMqTime +
+                ", nextCrawlTime=" + nextCrawlTime +
+                ", finishTime=" + finishTime +
+                ", finishStatus=" + finishStatus +
+                ", remainingRetry=" + remainingRetry +
+                ", msg='" + msg + '\'' +
+                ", job=" + job +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }

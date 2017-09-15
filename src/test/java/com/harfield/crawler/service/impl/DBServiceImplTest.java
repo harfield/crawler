@@ -1,6 +1,8 @@
 package com.harfield.crawler.service.impl;
 
+import com.harfield.crawler.apps.CrawlerStarter;
 import com.harfield.crawler.apps.Injector;
+import com.harfield.crawler.domain.Task;
 import com.harfield.crawler.service.DBService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,17 +14,19 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Injector.class)
+@SpringBootTest(classes = CrawlerStarter.class)
 public class DBServiceImplTest {
 
     @Resource
-    ApplicationContext ctx;
+    DBService dbService;
 
     @Test
     public void getPendingTasks() throws Exception {
-        System.out.println(ctx);
+        List<Task> pendingTasks = dbService.getPendingTasks();
+
 
     }
 
