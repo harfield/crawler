@@ -30,7 +30,7 @@ public interface CrawlerMapper {
             ",job.insert_time job_insert_time" +
             ",job.update_time job_update_time" +
             " from task join job on task.job_id=job.id " +
-            "where job.status <= 2 and ( (max_try > 0 and finished_status <> 0 ) or next_crawl_time <= now() ) ")
+            "where job.status <= 2 and ( (max_try > 0 and finished_status > 0 ) or next_crawl_time <= now() ) limit 5000 ")
     @Results({
             @Result(column = "job_id", property = "job.id"),
             @Result(column = "job_name", property = "job.name"),
@@ -55,4 +55,14 @@ public interface CrawlerMapper {
     })
     List<Task> getPendingTasks();
 
+    @Update("update task set " +
+            " finish_status = #{finishStatus} " +
+            " send_to_mq_time = #{sendToMqTime} " +
+            " start_time = #{startTime} " +
+            " finish_time = #{finishTime} " +
+            " next_crawl_time = #{nextCrawlTime} " +
+            " msg = #{msg} " +
+            " remaining_retry = #{remainRetry}" +
+            " where id = #{id} ")
+    int updateTaskById(Task task);
 }

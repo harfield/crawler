@@ -60,15 +60,17 @@ public class Injector {
                         Thread.sleep(backoff);
                     } else {
                         LOG.info("Fetch {} tasks .", pendingTasks.size());
+                        int succeedCnt = 0;
                         for (Task task : pendingTasks) {
                             try {
                                 mqService.send(MQUtils.EXCHANGE_NAME + "_" + task.getJob().getId(), JSON.toJSONString(task), MessageDeliveryMode.PERSISTENT);
                                 dbService.markTaskQueuing(task);
+                                succeedCnt++;
                             } catch (Exception e) {
-                                LOG.error(e.getMessage(), e);
+                                LOG.error("send task:{} to mq failed msg:{}", JSON.toJSONString(task), e.getMessage());
                             }
                         }
-                        LOG.info("queued {} tasks .", pendingTasks.size());
+                        LOG.info("queued {} tasks ,failed {}.", succeedCnt, pendingTasks.size() - succeedCnt);
                     }
 
                     Thread.sleep(l);

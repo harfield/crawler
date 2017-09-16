@@ -7,11 +7,15 @@ import java.util.Date;
  * Created by Administrator on 2016/1/4.
  */
 public class Task {
+    public static final int RUNNING = -1;
+    public static final int SUCCEED = 0;
+    public static final int FAILED = 1;
     private long id;
     private String url;
     private String referrer;
     private Date sendToMqTime;
     private Date nextCrawlTime;
+    private Date startTime;
     private Date finishTime ;
     private int finishStatus;
     private int remainingRetry;
@@ -58,6 +62,14 @@ public class Task {
 
     public void setNextCrawlTime(Date nextCrawlTime) {
         this.nextCrawlTime = nextCrawlTime;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
     public Date getFinishTime() {
