@@ -1,7 +1,7 @@
 spring:
   datasource:
     name : druidDataSource
-    url : jdbc:mysql://192.168.151.22:3306/crawler?useUnicode=true&characterEncoding=UTF-8
+    url : jdbc:mysql://127.0.0.1:3306/crawler?useUnicode=true&characterEncoding=UTF-8
     username : crawler
     password : 123456
     type : com.alibaba.druid.pool.DruidDataSource
@@ -20,3 +20,6 @@ spring:
     poolPreparedStatements : false
     maxOpenPreparedStatements : 20
 
+mybatis:
+  configuration:
+      map-underscore-to-camel-case: true

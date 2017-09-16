@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="false" scanPeriod="120 seconds">
 
-    <property name="log.base" value="/home/dw/logs"/>
+    <property name="log.base" value="/tmp/logs"/>
     <property name="trace" value="trace"/>
     <property name="debug" value="debug"/>
     <property name="info" value="info"/>

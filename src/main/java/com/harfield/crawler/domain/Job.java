@@ -7,7 +7,6 @@ import java.util.Date;
  */
 public class Job {
 
-
     private long id;
     private String name;
     private String desc;
@@ -16,7 +15,7 @@ public class Job {
     private Integer responseType;
     private Integer maxTry;
     private Integer maxFollowRedirects;
-    private String useragent;
+    private String userAgent;
     private Integer timeout;
     private Integer useProxy;
     private String headers;
@@ -93,12 +92,12 @@ public class Job {
         this.maxFollowRedirects = maxFollowRedirects;
     }
 
-    public String getUseragent() {
-        return useragent;
+    public String getUserAgent() {
+        return userAgent;
     }
 
-    public void setUseragent(String useragent) {
-        this.useragent = useragent;
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
     }
 
     public Integer getTimeout() {
@@ -200,7 +199,7 @@ public class Job {
                 ", responseType=" + responseType +
                 ", maxTry=" + maxTry +
                 ", maxFollowRedirects=" + maxFollowRedirects +
-                ", useragent='" + useragent + '\'' +
+                ", userAgent='" + userAgent + '\'' +
                 ", timeout=" + timeout +
                 ", useProxy=" + useProxy +
                 ", headers='" + headers + '\'' +
