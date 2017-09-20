@@ -1,5 +1,6 @@
 package com.harfield.crawler.dao;
 
+import com.harfield.crawler.domain.Job;
 import com.harfield.crawler.domain.Task;
 import org.apache.ibatis.annotations.*;
 
@@ -30,7 +31,7 @@ public interface CrawlerMapper {
             ",job.insert_time job_insert_time" +
             ",job.update_time job_update_time" +
             " from task join job on task.job_id=job.id " +
-            "where job.status <= 2 and ( (max_try > 0 and finished_status > 0 ) or next_crawl_time <= now() ) limit 5000 ")
+            "where job.status <= 2 and ( (remaining_retry > 0 and finish_status > 0 ) or next_crawl_time <= now() ) limit 5000 ")
     @Results({
             @Result(column = "job_id", property = "job.id"),
             @Result(column = "job_name", property = "job.name"),
@@ -65,4 +66,7 @@ public interface CrawlerMapper {
             " remaining_retry = #{remainRetry}" +
             " where id = #{id} ")
     int updateTaskById(Task task);
+
+    @Select("select * from JOB where status < 2")
+    List<Job> getRunningJobs();
 }

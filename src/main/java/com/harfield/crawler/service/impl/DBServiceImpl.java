@@ -1,6 +1,7 @@
 package com.harfield.crawler.service.impl;
 
 
+import com.harfield.crawler.domain.Job;
 import com.harfield.crawler.domain.Task;
 import com.harfield.crawler.dao.CrawlerMapper;
 import com.harfield.crawler.service.DBService;
@@ -20,6 +21,11 @@ public class DBServiceImpl implements DBService {
     @Override
     public List<Task> getPendingTasks() {
         return crawlerMapper.getPendingTasks();
+    }
+
+    @Override
+    public List<Job> getRunningJobs() {
+        return crawlerMapper.getRunningJobs();
     }
 
     @Override

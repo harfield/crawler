@@ -1,10 +1,18 @@
 package com.harfield.crawler.apps;
 
+import com.harfield.crawler.components.Fetcher;
+import com.harfield.crawler.components.Parser;
+import com.harfield.crawler.domain.Job;
+import com.harfield.crawler.service.DBService;
+import com.harfield.crawler.service.MQService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @SpringBootApplication
 public class CrawlerStarter {
@@ -12,15 +20,23 @@ public class CrawlerStarter {
         SpringApplication.run(CrawlerStarter.class, args);
     }
 
+    @Resource
+    DBService dbService;
+    @Resource
+    MQService mqService;
+
+
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
-        System.out.println(String.join("\n", beanDefinitionNames));
         return new CommandLineRunner() {
             @Override
-            public void run(String... args) throws Exception {
-//                String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
-//                System.out.println(String.join("\n", beanDefinitionNames));
+            public void run(String[] args) throws Exception {
+                while (true) {
+                    List<Job> jobs = dbService.getRunningJobs();
+                    for(Job j : jobs){
+//                       mqService
+                    }
+                }
             }
         };
     }
