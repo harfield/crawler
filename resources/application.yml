@@ -20,6 +20,20 @@ spring:
     poolPreparedStatements : false
     maxOpenPreparedStatements : 20
 
+  rabbitmq:
+    .
+    host: 10.215.28.39
+    port: 5672
+    username: dw
+    password: dw20150601
+    cache:
+      connection:
+        size:
+
+  mail:
+
+
+
 mybatis:
   configuration:
       map-underscore-to-camel-case: true
