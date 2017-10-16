@@ -27,4 +27,5 @@ public class MQServiceImpl implements MQService {
     public void send(String exchangeName, String routingKey, String msg, MessageDeliveryMode mode) {
 
     }
+
 }
