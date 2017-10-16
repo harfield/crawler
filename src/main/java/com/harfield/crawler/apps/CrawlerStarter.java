@@ -1,10 +1,9 @@
 package com.harfield.crawler.apps;
 
-import com.harfield.crawler.components.Fetcher;
-import com.harfield.crawler.components.Parser;
 import com.harfield.crawler.domain.Job;
 import com.harfield.crawler.service.DBService;
 import com.harfield.crawler.service.MQService;
+import org.springframework.amqp.core.MessageDeliveryMode;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,8 +33,9 @@ public class CrawlerStarter {
                 while (true) {
                     List<Job> jobs = dbService.getRunningJobs();
                     for(Job j : jobs){
-//                       mqService
+                        mqService.send("","", MessageDeliveryMode.PERSISTENT);
                     }
+                    break;
                 }
             }
         };

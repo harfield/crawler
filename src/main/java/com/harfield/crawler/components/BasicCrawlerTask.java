@@ -17,8 +17,8 @@ import java.util.*;
  * workflow
  */
 
-public class BasicCrawler implements MessageListener{
-    private static final Logger LOG = LoggerFactory.getLogger(BasicCrawler.class);
+public class BasicCrawlerTask implements MessageListener{
+    private static final Logger LOG = LoggerFactory.getLogger(BasicCrawlerTask.class);
 
     @Resource
     DBService dbService;
@@ -27,7 +27,7 @@ public class BasicCrawler implements MessageListener{
     private Parser parser;
     private Sink sink;
 
-    public BasicCrawler(Fetcher fetcher, Parser parser, Sink sink){
+    public BasicCrawlerTask(Fetcher fetcher, Parser parser, Sink sink){
         this.fetcher = fetcher;
         this.parser = parser;
         this.sink = sink;

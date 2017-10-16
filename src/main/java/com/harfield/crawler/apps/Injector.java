@@ -63,7 +63,7 @@ public class Injector {
                         int succeedCnt = 0;
                         for (Task task : pendingTasks) {
                             try {
-                                mqService.send(MQUtils.EXCHANGE_NAME + "_" + task.getJob().getId(), JSON.toJSONString(task), MessageDeliveryMode.PERSISTENT);
+                                mqService.send(MQUtils.EXCHANGE_NAME,MQUtils.EXCHANGE_NAME + "_" + task.getJob().getId(), JSON.toJSONString(task), MessageDeliveryMode.PERSISTENT);
                                 dbService.markTaskQueuing(task);
                                 succeedCnt++;
                             } catch (Exception e) {
