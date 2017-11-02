@@ -33,7 +33,7 @@ public class CrawlerStarter {
                 while (true) {
                     List<Job> jobs = dbService.getRunningJobs();
                     for(Job j : jobs){
-                        mqService.send("","", MessageDeliveryMode.PERSISTENT);
+                        mqService.send("","","", MessageDeliveryMode.PERSISTENT);
                     }
                     break;
                 }
